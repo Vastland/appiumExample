@@ -72,7 +72,7 @@ public class BrowserTest {
     @Test
     public void testBrowserTest() {
         driver.get("https://google.com.ua");
-        searchInput.sendKeys("GlobalLogic");
+        searchInput.sendKeys("QA StandUp");
         searchInput.sendKeys(Keys.ENTER);
     }
 
