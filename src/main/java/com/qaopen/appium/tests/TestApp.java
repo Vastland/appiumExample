@@ -22,7 +22,7 @@ import java.net.URL;
  */
 public class TestApp {
 
-    // Instance of WebDriver
+    // Instance of AndroidDriver
     private AndroidDriver driver;
 
     // Instance of WebDriverWait
@@ -104,10 +104,19 @@ public class TestApp {
      */
     @Test
     public void testTestApp() {
+        // Wait till sign in link to be clickable and click
         waitTillClickableAndClick(signInLink);
+
+        // Log in
         logIn();
+
+        // Wait till hamburger to be clickable and click
         waitTillClickableAndClick(hamburgerButton);
+
+        // Wait till User name to be clickable
         waitTillClickable(userNameLink);
+
+        // Compare expected and actual username
         Assert.assertEquals("Name is not correct", USER_NAME, userNameLink.getText());
     }
 
@@ -117,7 +126,10 @@ public class TestApp {
      * @param element
      */
     private void waitTillClickableAndClick(WebElement element) {
+        // Wait till WebElement to be clickable
         wait.until(ExpectedConditions.elementToBeClickable(element));
+
+        // Click on WebElement
         element.click();
     }
 
@@ -127,6 +139,7 @@ public class TestApp {
      * @param element
      */
     private void waitTillClickable(WebElement element) {
+        // Wait till WebElement to be clickable
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
@@ -134,13 +147,24 @@ public class TestApp {
      * Perform login
      */
     private void logIn() {
+        // Wait till email input to be clickable
         waitTillClickable(emailInput);
+
+        // Type email
         emailInput.sendKeys("g5444355@nwytg.net");
+
+        // If keyboard is shown navigate back to hide it
         if (driver.isKeyboardShown())
             driver.navigate().back();
+
+        // Type password
         passwordInput.sendKeys("Temp123");
+
+        // If keyboard is shown navigate back to hide it
         if (driver.isKeyboardShown())
             driver.navigate().back();
+
+        // Wait till sign in button to be clickable and click
         waitTillClickableAndClick(signInButton);
     }
 

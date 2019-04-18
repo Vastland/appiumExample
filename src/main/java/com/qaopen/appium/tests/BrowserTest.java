@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -21,8 +20,8 @@ import java.net.URL;
  */
 public class BrowserTest {
 
-    // Instance of WebDriver
-    private WebDriver driver;
+    // Instance of RemoteWebDriver
+    private RemoteWebDriver driver;
 
     // Instance of WebDriverWait
     private WebDriverWait wait;
@@ -71,8 +70,13 @@ public class BrowserTest {
      */
     @Test
     public void testBrowserTest() {
+        // Open Google
         driver.get("https://google.com.ua");
-        searchInput.sendKeys("Open QA 2019");
+
+        // Send string to search input
+        searchInput.sendKeys("QA Open 2019");
+
+        // Press Enter
         searchInput.sendKeys(Keys.ENTER);
     }
 
